@@ -157,6 +157,23 @@ The protocol uses a binary format where the first byte indicates the command typ
 
 Each data entry is assigned a Universally Unique Lexicographically Sortable Identifier (ULID), providing time-ordered unique identifiers.
 
+## Sample Graph of Node Connectivity and Command Execution
+
+```mermaid
+graph TD
+    subgraph Node 1
+        A1[Client Request] -->|CREATE / AGGREGATE| B1[Multiverse9 Node]
+        B1 -->|Stores Data| C1[Redis Storage]
+    end
+
+    subgraph Node 2
+        A2[Client Request] -->|CREATE / AGGREGATE| B2[Multiverse9 Node]
+        B2 -->|Stores Data| C2[Redis Storage]
+    end
+
+    B1 <-->|Data Sync| B2
+```
+
 ## License
 
 This project is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0) - see the [LICENSE](./LICENSE) file for details.
